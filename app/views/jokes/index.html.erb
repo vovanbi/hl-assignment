@@ -1,0 +1,13 @@
+<div>
+  <% if @joke %>
+    <p><%= @joke.content %></p>
+    
+    <hr class="line"/>
+    <div class="buttons">
+      <%= button_to 'This is Funny!', vote_joke_path(@joke, vote_type: 'like'), class: "button btn-like", method: :post %>
+      <%= button_to 'This is not funny.', vote_joke_path(@joke, vote_type: 'dislike'), class: "button", method: :post %>
+    </div>
+  <% else %>
+    <p>That's all the jokes for today! Come back another day!</p>
+  <% end %>
+</div>
