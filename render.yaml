@@ -10,7 +10,7 @@ services:
     name: hl-assignment
     env: ruby
     buildCommand: "./bin/hl-assignment.sh"
-    startCommand: "bundle exec puma -C config/puma.rb"
+    startCommand: "bundle exec rails server"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
