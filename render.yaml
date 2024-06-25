@@ -1,0 +1,20 @@
+databases:
+  - name: hl-assignment
+    databaseName: hl_assignment_development
+    user: hl_assignment_user
+    plan: free
+
+services:
+  - type: web
+    plan: free
+    name: hl-assignment
+    env: ruby
+    buildCommand: "./bin/hl-assignment.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: hl-assignment
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
